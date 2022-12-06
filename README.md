@@ -55,9 +55,8 @@ function formatName(user) {
 
 ```
 
-.
-
-In the example below, we embed the result of calling a JavaScript function, formatName(user), into an <h1> element.
+In the example below, we embed the result of calling a JavaScript function,
+formatName(user), into an <h1> element.
 
 ```
 const user = {
@@ -148,3 +147,24 @@ BootStrap
 Any other css Library
 
 ## Ternary Operators and Lists
+
+The ternary operator is a simplified conditional operator like if / else.
+
+Syntax: condition ? <expression if true> : <expression if false>
+
+Before
+
+```
+if (authenticated) {
+  renderApp();
+} else {
+  renderLogin();
+}
+```
+
+With Ternary Operator
+
+```
+authenticated ? renderApp() : renderLogin();
+
+```
