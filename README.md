@@ -380,6 +380,8 @@ export default App;
 - Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
 - The Effect Hook lets you perform side effects in function components:
 
+- Run code during the change in life cycle of a component.
+
 ```
 import React, { useState, useEffect } from 'react';
 
