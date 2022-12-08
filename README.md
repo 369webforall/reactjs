@@ -168,3 +168,248 @@ With Ternary Operator
 authenticated ? renderApp() : renderLogin();
 
 ```
+
+```
+function App(){
+    const age = 18;
+    const isRed = false;
+    return(
+<div className="App">
+{age >= 19 ? <h1>Over age</h1> : <h1> Under Age</h1>}
+<h1 color={{color: isRed ? "red" : "green" }}>
+
+</div>
+    )
+}
+
+export default App;
+```
+
+List Example
+
+```
+const App = () =>{
+const users = [
+  {name:"dev", age: 40},
+  {name:"John", age: 60},
+  {name:"Ramesh", age: 35},
+  {name: "Rupesh", age: 60}
+]
+
+  return(
+    <>
+    users.map((obj, key)=>{
+      return(
+        <User name={obj.name} age={obj.age}  />;
+      )
+    })
+
+    </>
+  )
+}
+
+
+const User =(props)=>{
+  return(
+    <>
+      <h1>{props.name} and {props.age}</h1>
+    </>
+  )
+}
+
+export default App
+
+```
+
+Note: When ever your are creating new component you are creating new file for it.
+We can talk more about folder structure in later course.
+
+## What state are in React and some examples of state.
+
+Just think state like a variable, which holds data.
+
+The state is a built-in React object that is used to contain data or information about the component.
+A component's state can change over time;
+whenever it changes, the component re-renders.
+
+## useState Hook
+
+A stateof a component is a variable that holds some information that may
+change over the lifetime of the component
+
+When the value of the state changes, the component re-renders ifself with updated values.
+
+There are many hook in react all the hook start with use Like useState, useEffect
+
+Example 1
+
+```
+import {useState} from 'react
+
+const App = () =>{
+  const[age, setAge] = useState(0);
+const increaseAge = ()=>{
+  setAge(age+1)
+}
+  return(
+    <div className = "App">
+      <h1>Age: {age}</h1>
+      <button onClick={increaseAge}>Increase Age</button>
+    </div>
+  )
+}
+
+export default App;
+
+```
+
+Example 2
+
+```
+import {useState} from 'react
+
+const App = () =>{
+  const[inputValue, setInputValue] = useState("");
+const handleChange = (e) =>{
+  setInputValue(e.target.value)
+}
+  return(
+    <div className = "App">
+
+      <input type="text" onChange={handleChange}>
+      {inputValue}
+    </div>
+  )
+}
+
+export default App;
+
+```
+
+note : onChange there is a event is created which is passed to the function as argument and we can capture that in our function as a parameter.
+
+Example 3 (Show/Hide text)
+
+```
+import {useState} from 'react
+
+const App = () =>{
+  const[showText, setShowText] = useState(false);
+
+  return(
+    <div className = "App">
+    <button onClick={()=> setShowText(!showText)}> SHOW/HIDE</button>
+    {showText ? <h1>This is a text</h1> : ""}
+    </div>
+  )
+}
+
+export default App;
+
+```
+
+- note: we can also use conditional operator && = showText && <h1>This is a text</h1>
+
+Example 4:-
+
+```
+import {useState} from 'react
+
+function App(){
+  const[textColor, setTextColor] = useState("black")
+
+  return(
+    <div>
+<button onClick={()=> {
+  setColor(textColor === 'black' ? "red" : "black")
+}}>
+
+<h1 style={{color: textColor}}>Hello This will change the color </h1>
+    </div>
+  )
+}
+
+export default App;
+
+```
+
+## Project - (CRUD Application in react - TODO List App)
+
+## How lifecycle of component work in react
+
+- Lifecycle of the component generally happens from the birth of the component to the death of the component.
+- There is 3 different stage in react component lifecycle
+- Creating (Mounting) - component appearing in the web page
+- Updating - componet update (due to state change or prop update)
+- Unmounting - component removed from the page.
+
+Example
+
+```
+import React from 'react';
+
+import {useState} from 'react';
+function  App(){
+  const[showText, setShowText] = useState(false)
+
+
+return (
+  <div>
+<button onClick={()=>setShowText(!showText)}>show-hide</button>
+{showText && <Text />}
+  </div>
+)
+}
+
+const Test = () =>{
+  const[text, setText] = useState("")
+  return(
+    <div>
+    <input type='text' onChange={(e)=>setText(e.target.value)} />
+     <h1>{text}</h1>
+    </div>
+  )
+}
+
+export default App;
+
+```
+
+## Using the Effect Hook
+
+- Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
+- The Effect Hook lets you perform side effects in function components:
+
+```
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+
+```
+
+## What is side effects.
+
+Data fetching, setting up a subscription,
+and manually changing the DOM in React components are all examples of side effects.
+Whether or not you’re used to calling these operations “side effects” (or just “effects”),
+you’ve likely performed them in your components before.
+
+## Fetch data using useEffect()
