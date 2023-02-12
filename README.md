@@ -1,5 +1,7 @@
 # Reactjs
 
+## Chapter 1 - Reactjs Basic concept
+
 A JavaScript library for building user interfaces
 
 ## Create React App
@@ -28,6 +30,19 @@ npm start
 ## Folder structure
 
 ## Introducing JSX
+
+# React JS Series
+
+## Related Videos :
+
+[Youtube - 1]()
+[Youtube - 2]()
+[Youtube - 3]()
+[Youtube - 4]()
+
+## Chapter 1 - Introduction to React & Setup
+
+- **Assignment 1** : If we delete `node_modules`. How to run our app again successfully ?
 
 ```
 const element = <h1>Hello, world!</h1>;
@@ -90,7 +105,7 @@ root.render(element);
 
 ```
 
-## Components and Props
+## Chapter 2 - Components - JSX and Props
 
 Component is just JavaScript function that returns UI. Component may have a logic along with UI.
 
@@ -125,12 +140,66 @@ function User(props){
 }
 ```
 
-### Create Component County and render 4 time, pass the props (name, population, income)
+- **Assignment 1** : Create a simple React app for **RESUME Builder**. It will be static website. You have to make components like **Resume** as top level and under it - **Skills**, **Education**, **Experience** etc as components. All resume data will be under 1 big JavaScript object like which you can us in components via props. You can fix the number of items in **Skills**, **Education**, **Experience** or any section. Example you can say that only 3 experience items is allowed.
+
+  ```
+   resume = {
+      experience : [ { year:2012, company:'xyz', role:'something' }],
+      education:[ ],
+      skills : [ 'react js', 'node js']
+      .....
+      ...
+      }
+  ```
+
+  > You can choose any simple HTML layout and convert it to React Components
+
+  Example Link : [ Resume HTML ](https://codepen.io/emzarts/pen/OXzmym)
 
 ## Props
 
+### Create Component County and render 4 time, pass the props (name, population, income)
+
 Props are like parameters to a function
 We use props to pass the data.
+
+1.  De-structuring Assignment
+2.  Import/Export
+3.  Spread Operator
+4.  Logical AND (&&)
+5.  Higher Order functions (map, filter, reduce):
+
+## Chapter 3 - Conditional Rendering & Lists
+
+- **Assignment 1** : Make a simple component which can conditionally render a list with **number** or **alphabets** or **_bullets_** in HTML for number. e..g. use a prop like `layout` for this. Also use a prop `items` for array of items in list.
+
+```
+< List layout="numbered" items={items}/>
+< List layout="alpha"  items={items}/>
+< List layout="bullet"   items={items}/>
+```
+
+- **Assignment 2** : This is continuation of previous assignment **RESUME Builder**
+
+  1. In this part you have to make some conditional rendering. Suppose if any section doesn't exist you have to remove that section from **Resume**. Example if `skills` is empty array than don't display `skills` section in Resume.
+
+  2. You have to use `map` in most places where there are arrays. Like **Skills**, **Education**, **Experience** if there are 3 entries, use `map` to display 3 experience items. You don't need fix number of items. Any array can have 1 to 10(or some Limit) any number of items. You can put some Limit, so that your layout is not affected.
+
+  3. Conditionally put some styling to **Resume**. Like `light` theme or `dark` theme or any other way you can switch the CSS layouts.
+
+  ```
+   resume = {
+      experience : [ { year:2012, company:'xyz', role:'something' }],
+      education:[ ],
+      skills : [ 'react js', 'node js']
+      .....
+      ...
+      }
+  ```
+
+  > You can choose any simple HTML layout and convert it to React Components
+
+Example Link : [ Resume HTML ](https://codepen.io/emzarts/pen/OXzmym)
 
 ## How to implement CSS in react ?
 
@@ -223,6 +292,8 @@ export default App
 
 Note: When ever your are creating new component you are creating new file for it.
 We can talk more about folder structure in later course.
+
+## Chapter 4 - Events && Event Bubbling
 
 ## What state are in React and some examples of state.
 
