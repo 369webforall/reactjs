@@ -39,6 +39,10 @@ npm start
 
 [YTV-Reactjs-2](https://youtu.be/OxBhBFjYc34)
 
+[YTV-Reactjs-3-part 1](https://youtu.be/mXfxyer_zvU)
+
+[YTV-Reactjs-3-part 2](https://youtu.be/lX_0vAzvhls)
+
 - **Assignment 1** : If we delete `node_modules`. How to run our app again successfully ?
 
 ```
