@@ -67,7 +67,7 @@ function formatName(user) {
 
 ```
 
-In the example below, we embed the result of calling a JavaScript function,formatName(user), into an <h1> element.
+In the example below, we embed the result of calling a JavaScript function,formatName(user), into an `<h1>` element.
 
 ```
 const user = {
