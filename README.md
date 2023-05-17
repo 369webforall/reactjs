@@ -175,6 +175,10 @@ We use props to pass the data.
 < List layout="bullet"   items={items}/>
 ```
 
+# React Hooks
+
+[React Hooks](https://www.w3schools.com/react/react_hooks.asp)
+
 ## Chapter 4 - State, useState Hooks
 
 ## Projct tic-tac-toe-game
