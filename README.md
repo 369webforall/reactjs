@@ -35,6 +35,8 @@ npm start
 
 ## Related Videos :
 
+[React core concept](https://www.youtube.com/watch?v=s2skans2dP4)
+
 [YTV-Reactjs-1](https://youtu.be/RKIeIljmnZQ)
 
 [YTV-Reactjs-2](https://youtu.be/OxBhBFjYc34)
