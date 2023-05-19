@@ -1,0 +1,74 @@
+.works {
+  background-image: url('../images/bg-curve-desktop.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 80px 0;
+}
+
+.works__row {
+  display: flex;
+}
+
+.works-left {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.works-left h2 {
+  font-size: 4rem;
+}
+
+.work-p {
+  font-size: 2rem;
+  width: 70%;
+}
+.arrow {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.quote {
+  background-color: #fff;
+  padding: 2rem;
+  width: 400px;
+  border-radius: 8px;
+  color: gray;
+}
+
+.quote-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+}
+.quote-p {
+  color: rgb(26, 30, 29);
+  font-size: 1.6rem;
+  text-align: justify;
+}
+.works a {
+  text-decoration: underline;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #3e52a3;
+}
+.works-right {
+  width: 40%;
+}
+
+.user {
+  display: flex;
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}

@@ -1,0 +1,14 @@
+.header {
+  padding: 2rem 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+ul {
+  display: flex;
+  gap: 3rem;
+  font-size: 3rem;
+}

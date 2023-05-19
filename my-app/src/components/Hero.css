@@ -1,0 +1,26 @@
+.hero {
+  margin: 4rem auto;
+}
+
+.hero__row {
+  display: flex;
+  gap: 24px;
+}
+
+.hero-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+}
+.hero-left h1 {
+  font-size: 5rem;
+}
+
+.hero-left p {
+  font-size: 2.1rem;
+}
+.hero-right {
+  width: 50%;
+}
