@@ -201,6 +201,7 @@ We use props to pass the data.
 - useLayoutEffect Hook
 - use Context
 - useReducer Hook
+- Redux Toolkit
 
 ## useState Hook
 
