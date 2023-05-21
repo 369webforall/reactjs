@@ -468,3 +468,71 @@ The dependency array `[]` passed as the second argument ensures that the effect 
 The component's rendering logic handles the loading state. If `data` is not yet available, it displays a "Loading data..." message. Once the data is fetched, it maps over the array and renders each item's name in a list.
 
 Note: Make sure to import `React`, `useState`, and `useEffect` from the 'react' package before using them in your code.
+
+# useRef Hook
+
+The `useRef` hook in React allows you to create a mutable reference that persists across re-renders of a component. It can be used to access and modify DOM elements, store values, or maintain other mutable data. Here's an example of how to use the `useRef` hook:
+
+```javascript
+import React, { useRef } from 'react';
+
+function ExampleComponent() {
+  const inputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    // Accessing the input element using the ref
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleButtonClick}>Focus Input</button>
+    </div>
+  );
+}
+
+export default ExampleComponent;
+```
+
+In this example, the `useRef` hook is used to create a reference called `inputRef`. It is initialized with the value `null`.
+
+The `inputRef` is then assigned to the `ref` prop of the `input` element. This allows you to access the DOM node for the input element using `inputRef.current`. In this case, when the button is clicked, the `handleButtonClick` function is called, which focuses the input element by calling `inputRef.current.focus()`.
+
+Note that unlike state variables (`useState`), updating the `ref` value doesn't cause a re-render of the component. It allows you to store and access values that persist across renders without triggering re-renders.
+
+`useRef` can also be used to store and access other mutable data that you want to persist across renders. For example:
+
+```javascript
+import React, { useRef, useEffect } from 'react';
+
+function ExampleComponent() {
+  const intervalRef = useRef(null);
+
+  useEffect(() => {
+    // Start an interval when the component mounts
+    intervalRef.current = setInterval(() => {
+      console.log('Interval tick');
+    }, 1000);
+
+    // Clean up the interval when the component unmounts
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, []);
+
+  return (
+    <div>
+      <p>Check the console for interval ticks</p>
+    </div>
+  );
+}
+
+export default ExampleComponent;
+```
+
+In this example, the `useRef` hook is used to store the reference to an interval created using `setInterval`. The interval ID is stored in `intervalRef.current`.
+
+The `useEffect` hook is used to start the interval when the component mounts by assigning the interval ID to `intervalRef.current`. The returned cleanup function is used to clear the interval when the component unmounts.
+
+Note: Make sure to import `React` and `useRef` from the 'react' package before using them in your code.
