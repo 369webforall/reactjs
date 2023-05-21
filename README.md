@@ -819,3 +819,94 @@ export default App;
 In this example, we use the `useSelector` hook to access the `counter` state from the Redux store, and the `useDispatch` hook to get the dispatch function. We can then dispatch the actions (`increment`, `decrement`, `reset`) using the dispatch function.
 
 By following these steps, you'll have a Redux-powered state management setup in your React application using Redux Toolkit.
+
+## example of redux
+
+Redux Toolkit is a library that simplifies and optimizes Redux state management by providing utility functions and guidelines for creating actions, reducers, and the overall store setup. Here's an example of how to use Redux Toolkit for state management:
+
+1. Install Redux Toolkit:
+
+```shell
+npm install @reduxjs/toolkit
+```
+
+2. Create a Redux store using Redux Toolkit:
+
+```javascript
+// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './counterSlice';
+
+const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+});
+
+export default store;
+```
+
+3. Create a slice with actions and reducers:
+
+```javascript
+// counterSlice.js
+import { createSlice } from '@reduxjs/toolkit';
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: 0,
+  reducers: {
+    increment: (state) => state + 1,
+    decrement: (state) => state - 1,
+    reset: () => 0,
+  },
+});
+
+export const { increment, decrement, reset } = counterSlice.actions;
+export default counterSlice.reducer;
+```
+
+4. Use the Redux store in your components:
+
+```javascript
+// App.js
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement, reset } from './counterSlice';
+
+function App() {
+  const count = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
+
+  const handleIncrement = () => {
+    dispatch(increment());
+  };
+
+  const handleDecrement = () => {
+    dispatch(decrement());
+  };
+
+  const handleReset = () => {
+    dispatch(reset());
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
+      <button onClick={handleReset}>Reset</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+In this example, we create a Redux store using `configureStore` from Redux Toolkit in `store.js`. We define a `counter` slice with initial state, reducers, and actions using `createSlice` in `counterSlice.js`.
+
+The `App` component accesses the count value from the store using `useSelector` and dispatches actions using `useDispatch`. The actions (`increment`, `decrement`, `reset`) are imported from the `counterSlice`. When an action is dispatched, the corresponding reducer in the slice is called to update the state.
+
+Finally, the component renders the count value and buttons that trigger the corresponding actions.
+
+Note: Make sure to install Redux Toolkit (`@reduxjs/toolkit`) and import necessary functions (`configureStore`, `createSlice`, `useSelector`, `useDispatch`) before using them in your code.
