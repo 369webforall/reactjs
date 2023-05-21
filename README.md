@@ -202,6 +202,39 @@ When the value of the state changes, the component re-renders ifself with update
 
 There are many hook in react all the hook start with use Like useState, useEffect
 
+In React, the `useState` hook is used to add state to functional components. It allows you to declare and update state variables within your component. Here's an example of how to use the `useState` hook:
+
+```
+import React, { useState } from 'react';
+
+function ExampleComponent() {
+  // Declare a state variable and its initial value using useState
+  const [count, setCount] = useState(0);
+
+  // Update the state variable when the button is clicked
+  const handleButtonClick = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleButtonClick}>Increment</button>
+    </div>
+  );
+}
+
+export default ExampleComponent;
+```
+
+In this example, the `useState` hook is used to add state to the `ExampleComponent` functional component. It initializes the `count` state variable with an initial value of 0. The `setCount` function returned by `useState` is used to update the `count` variable.
+
+When the button is clicked, the `handleButtonClick` function is triggered, which calls `setCount` to increment the `count` state variable by 1. This triggers a re-render of the component, and the updated count value is displayed.
+
+Note: Make sure to import `React` and `useState` from the 'react' package before using them in your code.
+
+## More Example of useState Hook
+
 Example 1
 
 ```
@@ -294,6 +327,8 @@ export default App;
 
 ```
 
+```
+
 ## Project - (CRUD Application in react - TODO List App)
 
 ## How lifecycle of component work in react
@@ -307,14 +342,15 @@ export default App;
 Example
 
 ```
+
 import React from 'react';
 
 import {useState} from 'react';
-function  App(){
-  const[showText, setShowText] = useState(false)
-
+function App(){
+const[showText, setShowText] = useState(false)
 
 return (
+
   <div>
 <button onClick={()=>setShowText(!showText)}>show-hide</button>
 {showText && <Text />}
@@ -323,13 +359,14 @@ return (
 }
 
 const Test = () =>{
-  const[text, setText] = useState("")
-  return(
-    <div>
-    <input type='text' onChange={(e)=>setText(e.target.value)} />
-     <h1>{text}</h1>
-    </div>
-  )
+const[text, setText] = useState("")
+return(
+
+<div>
+<input type='text' onChange={(e)=>setText(e.target.value)} />
+<h1>{text}</h1>
+</div>
+)
 }
 
 export default App;
@@ -344,29 +381,31 @@ export default App;
 - Run code during the change in life cycle of a component.
 
 ```
+
 import React, { useState, useEffect } from 'react';
 
 function Example() {
-  const [count, setCount] = useState(0);
+const [count, setCount] = useState(0);
 
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    // Update the document title using the browser API
-    document.title = `You clicked ${count} times`;
-  });
+// Similar to componentDidMount and componentDidUpdate:
+useEffect(() => {
+// Update the document title using the browser API
+document.title = `You clicked ${count} times`;
+});
 
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
+return (
+
+<div>
+<p>You clicked {count} times</p>
+<button onClick={() => setCount(count + 1)}>
+Click me
+</button>
+</div>
+);
 }
 
-
 ```
+
 
 ## What is side effects.
 
@@ -375,4 +414,56 @@ and manually changing the DOM in React components are all examples of side effec
 Whether or not you’re used to calling these operations “side effects” (or just “effects”),
 you’ve likely performed them in your components before.
 
-## Fetch data using useEffect()
+# useEffect Hook.
+
+In React, the `useEffect` hook is used to perform side effects in functional components. Side effects may include fetching data, subscribing to events, or manually manipulating the DOM. Here's an example of how to use the `useEffect` hook:
+
+```
+
+import React, { useState, useEffect } from 'react';
+
+function ExampleComponent() {
+const [data, setData] = useState(null);
+
+// Fetch data from an API when the component mounts
+useEffect(() => {
+const fetchData = async () => {
+const response = await fetch('https://api.example.com/data');
+const result = await response.json();
+setData(result);
+};
+
+    fetchData();
+
+}, []);
+
+return (
+<div>
+{data ? (
+<ul>
+{data.map((item) => (
+<li key={item.id}>{item.name}</li>
+))}
+</ul>
+) : (
+<p>Loading data...</p>
+)}
+</div>
+);
+}
+
+export default ExampleComponent;
+
+```
+
+In this example, the `useEffect` hook is used to fetch data from an API when the component mounts. The `useEffect` function takes two arguments: a callback function and a dependency array.
+
+Inside the callback function, the `fetchData` function is defined, which makes an asynchronous request to the API and updates the `data` state variable using the `setData` function.
+
+The dependency array `[]` passed as the second argument ensures that the effect runs only once when the component mounts. If you want the effect to run whenever a specific dependency changes, you can include that dependency in the array.
+
+The component's rendering logic handles the loading state. If `data` is not yet available, it displays a "Loading data..." message. Once the data is fetched, it maps over the array and renders each item's name in a list.
+
+Note: Make sure to import `React`, `useState`, and `useEffect` from the 'react' package before using them in your code.
+
+```
