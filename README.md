@@ -418,6 +418,7 @@ you’ve likely performed them in your components before.
 
 In React, the `useEffect` hook is used to perform side effects in functional components. Side effects may include fetching data, subscribing to events, or manually manipulating the DOM. Here's an example of how to use the `useEffect` hook:
 
+
 ```
 
 import React, { useState, useEffect } from 'react';
@@ -425,7 +426,6 @@ import React, { useState, useEffect } from 'react';
 function ExampleComponent() {
 const [data, setData] = useState(null);
 
-// Fetch data from an API when the component mounts
 useEffect(() => {
 const fetchData = async () => {
 const response = await fetch('https://api.example.com/data');
@@ -438,6 +438,7 @@ setData(result);
 }, []);
 
 return (
+
 <div>
 {data ? (
 <ul>
@@ -465,5 +466,6 @@ The dependency array `[]` passed as the second argument ensures that the effect 
 The component's rendering logic handles the loading state. If `data` is not yet available, it displays a "Loading data..." message. Once the data is fetched, it maps over the array and renders each item's name in a list.
 
 Note: Make sure to import `React`, `useState`, and `useEffect` from the 'react' package before using them in your code.
+
 
 ```
