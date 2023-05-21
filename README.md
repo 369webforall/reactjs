@@ -421,42 +421,38 @@ you’ve likely performed them in your components before.
 
 In React, the `useEffect` hook is used to perform side effects in functional components. Side effects may include fetching data, subscribing to events, or manually manipulating the DOM. Here's an example of how to use the `useEffect` hook:
 
-```
-
+```javascript
 import React, { useState, useEffect } from 'react';
 
 function ExampleComponent() {
-const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
 
-useEffect(() => {
-const fetchData = async () => {
-const response = await fetch('https://api.example.com/data');
-const result = await response.json();
-setData(result);
-};
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('https://api.example.com/data');
+      const result = await response.json();
+      setData(result);
+    };
 
     fetchData();
+  }, []);
 
-}, []);
-
-return (
-
-<div>
-{data ? (
-<ul>
-{data.map((item) => (
-<li key={item.id}>{item.name}</li>
-))}
-</ul>
-) : (
-<p>Loading data...</p>
-)}
-</div>
-);
+  return (
+    <div>
+      {data ? (
+        <ul>
+          {data.map((item) => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>Loading data...</p>
+      )}
+    </div>
+  );
 }
 
 export default ExampleComponent;
-
 ```
 
 In this example, the `useEffect` hook is used to fetch data from an API when the component mounts. The `useEffect` function takes two arguments: a callback function and a dependency array.
