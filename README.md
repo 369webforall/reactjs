@@ -1,5 +1,8 @@
 # Reactjs
 
+- Project - (CRUD Application in react - TODO List App)
+- Tic-Tac-Toe Game
+
 ## Chapter 1 - Reactjs Basic concept
 
 A JavaScript library for building user interfaces
@@ -189,9 +192,15 @@ We use props to pass the data.
 
 [React Hooks](https://www.w3schools.com/react/react_hooks.asp)
 
-## Chapter 4 - State, useState Hooks
+## Chapter 4 - State & Hooks
 
-## Projct tic-tac-toe-game
+- useState Hook
+- useEffect Hook
+- useRef Hook
+- useMemo Hook
+- useLayoutEffect Hook
+- use Context
+- useReducer Hook
 
 ## useState Hook
 
@@ -235,7 +244,7 @@ Note: Make sure to import `React` and `useState` from the 'react' package before
 
 ## More Example of useState Hook
 
-Example 1
+- Example 1
 
 ```
 import {useState} from 'react
@@ -257,7 +266,7 @@ export default App;
 
 ```
 
-Example 2
+- Example 2
 
 ```
 import {useState} from 'react
@@ -282,7 +291,7 @@ export default App;
 
 note : onChange there is a event is created which is passed to the function as argument and we can capture that in our function as a parameter.
 
-Example 3 (Show/Hide text)
+- Example 3 (Show/Hide text)
 
 ```
 import {useState} from 'react
@@ -304,7 +313,7 @@ export default App;
 
 - note: we can also use conditional operator && = showText && `<h1>This is a text</h1>`
 
-Example 4:-
+- Example 4:-
 
 ```
 import {useState} from 'react
@@ -327,10 +336,6 @@ export default App;
 
 ```
 
-```
-
-## Project - (CRUD Application in react - TODO List App)
-
 ## How lifecycle of component work in react
 
 - Lifecycle of the component generally happens from the birth of the component to the death of the component.
@@ -339,10 +344,9 @@ export default App;
 - Updating - componet update (due to state change or prop update)
 - Unmounting - component removed from the page.
 
-Example
+- Example
 
 ```
-
 import React from 'react';
 
 import {useState} from 'react';
@@ -373,7 +377,7 @@ export default App;
 
 ```
 
-## Using the Effect Hook
+# Using the Effect Hook
 
 - Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
 - The Effect Hook lets you perform side effects in function components:
@@ -406,7 +410,6 @@ Click me
 
 ```
 
-
 ## What is side effects.
 
 Data fetching, setting up a subscription,
@@ -417,7 +420,6 @@ you’ve likely performed them in your components before.
 # useEffect Hook.
 
 In React, the `useEffect` hook is used to perform side effects in functional components. Side effects may include fetching data, subscribing to events, or manually manipulating the DOM. Here's an example of how to use the `useEffect` hook:
-
 
 ```
 
@@ -466,6 +468,3 @@ The dependency array `[]` passed as the second argument ensures that the effect 
 The component's rendering logic handles the loading state. If `data` is not yet available, it displays a "Loading data..." message. Once the data is fetched, it maps over the array and renders each item's name in a list.
 
 Note: Make sure to import `React`, `useState`, and `useEffect` from the 'react' package before using them in your code.
-
-
-```
