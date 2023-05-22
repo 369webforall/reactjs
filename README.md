@@ -52,6 +52,8 @@ npm start
 
 [YTV-Reactjs-5-react-router-dom](https://youtu.be/4mFkZUGQc6s)
 
+[YTV-SCSS](https://youtu.be/tTcpN2lAU7o)
+
 - **Assignment 1** : If we delete `node_modules`. How to run our app again successfully ?
 
 ```
