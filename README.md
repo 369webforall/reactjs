@@ -56,6 +56,8 @@ npm start
 
 [YTV-Reactjs-vite](https://youtu.be/hzWaHUk2RtI)
 
+[YTV-Reactjs-tailwind css](https://youtu.be/MN1YgQ5Pr6Q)
+
 - **Assignment 1** : If we delete `node_modules`. How to run our app again successfully ?
 
 ```
