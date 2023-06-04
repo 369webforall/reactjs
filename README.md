@@ -204,6 +204,13 @@ We use props to pass the data.
 
 ## Chapter 4 - State & Hooks
 
+Hooks are the `function` to use some react feature in functional
+components.
+
+In other word, Hooks are functions that make Functional components work like `Class Components`.
+
+Hooks are specail function.
+
 - useState Hook
 - useEffect Hook
 - useRef Hook
@@ -224,7 +231,7 @@ There are many hook in react all the hook start with use Like useState, useEffec
 
 In React, the `useState` hook is used to add state to functional components. It allows you to declare and update state variables within your component. Here's an example of how to use the `useState` hook:
 
-```
+```javascript
 import React, { useState } from 'react';
 
 function ExampleComponent() {
@@ -257,7 +264,7 @@ Note: Make sure to import `React` and `useState` from the 'react' package before
 
 - Example 1
 
-```
+```javascript
 import {useState} from 'react
 
 const App = () =>{
@@ -279,7 +286,7 @@ export default App;
 
 - Example 2
 
-```
+```javascript
 import {useState} from 'react
 
 const App = () =>{
@@ -304,7 +311,7 @@ note : onChange there is a event is created which is passed to the function as a
 
 - Example 3 (Show/Hide text)
 
-```
+```javascript
 import {useState} from 'react
 
 const App = () =>{
@@ -326,7 +333,7 @@ export default App;
 
 - Example 4:-
 
-```
+```javascript
 import {useState} from 'react
 
 function App(){
@@ -347,6 +354,75 @@ export default App;
 
 ```
 
+```javascript
+import React, { useState } from 'react';
+
+const UseState = () => {
+  //   const [age, setAge] = useState(0);
+  //   const [name, setName] = useState('');
+  const [details, setDetails] = useState({ name: 'Dev', age: 40 });
+
+  return (
+    <>
+      <p>{details.name}</p>
+      <p>{details.age}</p>
+      <input
+        type="text"
+        placeholder="enter your name"
+        onChange={(e) =>
+          setDetails((prev) => ({
+            ...prev,
+            name: e.target.value,
+          }))
+        }
+      />
+      <button
+        onClick={() =>
+          setDetails((prev) => ({
+            ...prev,
+            age: prev.age + 1,
+          }))
+        }
+      >
+        Change age
+      </button>
+    </>
+  );
+};
+
+export default UseState;
+```
+
+- Example
+
+```javascript
+import React from 'react';
+
+import { useState } from 'react';
+function App() {
+  const [showText, setShowText] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setShowText(!showText)}>show-hide</button>
+      {showText && <Text />}
+    </div>
+  );
+}
+
+const Test = () => {
+  const [text, setText] = useState('');
+  return (
+    <div>
+      <input type="text" onChange={(e) => setText(e.target.value)} />
+      <h1>{text}</h1>
+    </div>
+  );
+};
+
+export default App;
+```
+
 ## How lifecycle of component work in react
 
 - Lifecycle of the component generally happens from the birth of the component to the death of the component.
@@ -355,45 +431,28 @@ export default App;
 - Updating - componet update (due to state change or prop update)
 - Unmounting - component removed from the page.
 
-- Example
-
-```
-import React from 'react';
-
-import {useState} from 'react';
-function App(){
-const[showText, setShowText] = useState(false)
-
-return (
-
-  <div>
-<button onClick={()=>setShowText(!showText)}>show-hide</button>
-{showText && <Text />}
-  </div>
-)
-}
-
-const Test = () =>{
-const[text, setText] = useState("")
-return(
-
-<div>
-<input type='text' onChange={(e)=>setText(e.target.value)} />
-<h1>{text}</h1>
-</div>
-)
-}
-
-export default App;
-
-```
-
 # Using the Effect Hook
 
 - Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
 - The Effect Hook lets you perform side effects in function components:
 
 - Run code during the change in life cycle of a component.
+
+# What is sideEffect ?
+
+- Side effect are actions which are performed with `Outside World`
+  we need to perfom side effect when we need to reach outside of React components to do something.
+
+  useEffect(callback, dependencies)
+
+  - In callback function we add what to run
+  - dependencies make sure when to run.
+
+## Varitation of useEffect
+
+- useEffect without dependencies.
+- useEffect with empty array.
+- useEffect with variables as dependencies.
 
 ```
 
@@ -475,6 +534,37 @@ The dependency array `[]` passed as the second argument ensures that the effect 
 The component's rendering logic handles the loading state. If `data` is not yet available, it displays a "Loading data..." message. Once the data is fetched, it maps over the array and renders each item's name in a list.
 
 Note: Make sure to import `React`, `useState`, and `useEffect` from the 'react' package before using them in your code.
+
+# Cleanup function in useEffect
+
+- useEffect can return a funtion where we can add cleanup code.
+
+eg.
+
+```javascript
+import React, { useState, useEffect } from 'react';
+
+const UseEffect = () => {
+  const [timer, setTimer] = useState(0);
+
+  useEffect(() => {
+    const time = setInterval(() => {
+      setTimer(timer + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(time);
+    };
+  });
+  return (
+    <div>
+      <h1>{timer}</h1>
+    </div>
+  );
+};
+
+export default UseEffect;
+```
 
 # useRef Hook
 
