@@ -566,6 +566,121 @@ const UseEffect = () => {
 export default UseEffect;
 ```
 
+# useContext Hook
+
+![HTML Element](./images/1.png)
+The `useContext` hook in React is used to access the value of a context created with the `createContext` API. It allows you to consume context values directly within functional components without the need for a context consumer. Here's an example of how to use the `useContext` hook:
+
+![Component diagram](./asset/component-tree.png)
+
+```javascript
+import React, { useContext } from 'react';
+
+// Create a context
+const MyContext = React.createContext();
+
+// Create a provider component
+function MyContextProvider(props) {
+  const contextValue = {
+    message: 'Hello from Context!',
+    // Other context data...
+  };
+
+  return (
+    <MyContext.Provider value={contextValue}>
+      {props.children}
+    </MyContext.Provider>
+  );
+}
+
+// Consume the context within a component
+function MyComponent() {
+  const context = useContext(MyContext);
+
+  return <p>{context.message}</p>;
+}
+
+// Wrap the component with the provider
+function App() {
+  return (
+    <MyContextProvider>
+      <MyComponent />
+    </MyContextProvider>
+  );
+}
+
+export default App;
+```
+
+In this example, we first create a context using `React.createContext()` and name it `MyContext`. Then, we create a provider component `MyContextProvider` that wraps around the components that need access to the context. The provider component defines the value that will be available to the components within its tree.
+
+Inside the `MyComponent` component, we use the `useContext` hook to consume the context. The `useContext` hook takes the context object as an argument and returns its current value. In this case, we access the `message` property from the context and render it within a paragraph tag.
+
+Finally, in the `App` component, we wrap `MyComponent` with the `MyContextProvider` to make the context value available to `MyComponent` and any other components within its tree.
+
+Note: The `useContext` hook can only be used inside functional components and cannot be used in class components. Additionally, make sure to import `React` and `useContext` from the 'react' package before using them in your code.
+
+# useReducer Hook
+
+The `useReducer` hook in React is used to manage complex state and state transitions in functional components. It is an alternative to the `useState` hook when the state logic becomes more intricate. `useReducer` follows the same principles as the `Reducer` concept in Redux. Here's an example of how to use the `useReducer` hook:
+
+```javascript
+import React, { useReducer } from 'react';
+
+// Define the reducer function
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    case 'RESET':
+      return { count: 0 };
+    default:
+      throw new Error('Unknown action type');
+  }
+};
+
+function ExampleComponent() {
+  // Initialize the state using useReducer
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  // Define event handlers that dispatch actions
+  const increment = () => {
+    dispatch({ type: 'INCREMENT' });
+  };
+
+  const decrement = () => {
+    dispatch({ type: 'DECREMENT' });
+  };
+
+  const reset = () => {
+    dispatch({ type: 'RESET' });
+  };
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+}
+
+export default ExampleComponent;
+```
+
+In this example, we define a reducer function that takes the current state and an action as parameters. The reducer function updates the state based on the action type. In this case, we have three actions: `INCREMENT`, `DECREMENT`, and `RESET`.
+
+Inside the `ExampleComponent`, we initialize the state using the `useReducer` hook. It takes the reducer function and the initial state as arguments, and returns the current state and a `dispatch` function to trigger state updates.
+
+We define event handlers (`increment`, `decrement`, `reset`) that dispatch actions using the `dispatch` function. When an action is dispatched, the reducer function is called with the current state and the action, and it returns the updated state.
+
+The state returned by `useReducer` is accessed via `state.count` in this example. The UI elements use the event handlers to trigger state updates.
+
+Note: Make sure to import `React` and `useReducer` from the 'react' package before using them in your code.
+
 # useRef Hook
 
 The `useRef` hook in React allows you to create a mutable reference that persists across re-renders of a component. It can be used to access and modify DOM elements, store values, or maintain other mutable data. Here's an example of how to use the `useRef` hook:
@@ -705,118 +820,6 @@ Inside the `useLayoutEffect` callback, the `offsetWidth` of the element is measu
 The `useLayoutEffect` hook is similar to `useEffect`, but it runs synchronously after DOM updates. This means that any changes you make within `useLayoutEffect` will be applied immediately, potentially blocking the browser from painting the screen until your code execution is complete. Use it judiciously and ensure that the code inside `useLayoutEffect` is optimized and doesn't cause performance issues.
 
 Note: Make sure to import `React`, `useLayoutEffect`, and `useRef` from the 'react' package before using them in your code.
-
-# useContext Hook
-
-The `useContext` hook in React is used to access the value of a context created with the `createContext` API. It allows you to consume context values directly within functional components without the need for a context consumer. Here's an example of how to use the `useContext` hook:
-
-```javascript
-import React, { useContext } from 'react';
-
-// Create a context
-const MyContext = React.createContext();
-
-// Create a provider component
-function MyContextProvider(props) {
-  const contextValue = {
-    message: 'Hello from Context!',
-    // Other context data...
-  };
-
-  return (
-    <MyContext.Provider value={contextValue}>
-      {props.children}
-    </MyContext.Provider>
-  );
-}
-
-// Consume the context within a component
-function MyComponent() {
-  const context = useContext(MyContext);
-
-  return <p>{context.message}</p>;
-}
-
-// Wrap the component with the provider
-function App() {
-  return (
-    <MyContextProvider>
-      <MyComponent />
-    </MyContextProvider>
-  );
-}
-
-export default App;
-```
-
-In this example, we first create a context using `React.createContext()` and name it `MyContext`. Then, we create a provider component `MyContextProvider` that wraps around the components that need access to the context. The provider component defines the value that will be available to the components within its tree.
-
-Inside the `MyComponent` component, we use the `useContext` hook to consume the context. The `useContext` hook takes the context object as an argument and returns its current value. In this case, we access the `message` property from the context and render it within a paragraph tag.
-
-Finally, in the `App` component, we wrap `MyComponent` with the `MyContextProvider` to make the context value available to `MyComponent` and any other components within its tree.
-
-Note: The `useContext` hook can only be used inside functional components and cannot be used in class components. Additionally, make sure to import `React` and `useContext` from the 'react' package before using them in your code.
-
-# useReducer Hook
-
-The `useReducer` hook in React is used to manage complex state and state transitions in functional components. It is an alternative to the `useState` hook when the state logic becomes more intricate. `useReducer` follows the same principles as the `Reducer` concept in Redux. Here's an example of how to use the `useReducer` hook:
-
-```javascript
-import React, { useReducer } from 'react';
-
-// Define the reducer function
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { count: state.count + 1 };
-    case 'DECREMENT':
-      return { count: state.count - 1 };
-    case 'RESET':
-      return { count: 0 };
-    default:
-      throw new Error('Unknown action type');
-  }
-};
-
-function ExampleComponent() {
-  // Initialize the state using useReducer
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
-
-  // Define event handlers that dispatch actions
-  const increment = () => {
-    dispatch({ type: 'INCREMENT' });
-  };
-
-  const decrement = () => {
-    dispatch({ type: 'DECREMENT' });
-  };
-
-  const reset = () => {
-    dispatch({ type: 'RESET' });
-  };
-
-  return (
-    <div>
-      <p>Count: {state.count}</p>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-      <button onClick={reset}>Reset</button>
-    </div>
-  );
-}
-
-export default ExampleComponent;
-```
-
-In this example, we define a reducer function that takes the current state and an action as parameters. The reducer function updates the state based on the action type. In this case, we have three actions: `INCREMENT`, `DECREMENT`, and `RESET`.
-
-Inside the `ExampleComponent`, we initialize the state using the `useReducer` hook. It takes the reducer function and the initial state as arguments, and returns the current state and a `dispatch` function to trigger state updates.
-
-We define event handlers (`increment`, `decrement`, `reset`) that dispatch actions using the `dispatch` function. When an action is dispatched, the reducer function is called with the current state and the action, and it returns the updated state.
-
-The state returned by `useReducer` is accessed via `state.count` in this example. The UI elements use the event handlers to trigger state updates.
-
-Note: Make sure to import `React` and `useReducer` from the 'react' package before using them in your code.
 
 # State management using Redux toolkit
 
