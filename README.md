@@ -68,6 +68,10 @@ npm start
 
 [YTV-Reactjs-tailwind css Continue](https://youtu.be/Fz5liJOM2is)
 
+# React class video starting from- 2023-06-12
+
+[Reactjs-day one](https://youtu.be/9l9jan9UU8U)
+
 - **Assignment 1** : If we delete `node_modules`. How to run our app again successfully ?
 
 ```
