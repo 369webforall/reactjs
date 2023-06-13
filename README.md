@@ -72,6 +72,8 @@ npm start
 
 [Reactjs-day one](https://youtu.be/9l9jan9UU8U)
 
+[Reactjs-day two](https://youtu.be/JGTrr3qL9Zw)
+
 - **Assignment 1** : If we delete `node_modules`. How to run our app again successfully ?
 
 ```
