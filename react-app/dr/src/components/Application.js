@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
-import DayList from "./DayList"; // Import the DayList component
-import "components/Application.scss";
-import Appointment from "./Appointment";
-import axios from "axios";
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
+import React, { useState, useEffect } from 'react';
+import DayList from './DayList'; // Import the DayList component
+import 'components/Application.scss';
+import Appointment from './Appointment';
+import axios from 'axios';
+import {
+  getAppointmentsForDay,
+  getInterview,
+  getInterviewersForDay,
+} from 'helpers/selectors';
+import useApplicationData from 'hooks/useApplicationData';
 
 // const appointments = {
 //   "1": {
@@ -44,38 +49,16 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "help
 //   }
 // };
 
-
-
 export default function Application(props) {
-  const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {},
-    interviewers: {},
-  });
+  const { state, setDay, bookInterview, cancelInterview } =
+    useApplicationData();
+
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewersForDay(state, state.day);
-  const setDay = day => setState({ ...state, day });
 
   // const setDays = (days) => {
   //   setState(prev => ({ ...prev, days }));
   // }
-
-
-
-
-  useEffect(() => {
-    Promise.all([
-      axios.get('http://localhost:8001/api/days'),
-      axios.get('http://localhost:8001/api/appointments'),
-      axios.get('http://localhost:8001/api/interviewers')
-    ]).then((all) => {
-      setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
-    });
-
-  }, [])
-
-
 
   // for(const appointment in appointments) {
   //     const interview = getInterview(state, appointment.interview);
@@ -100,17 +83,14 @@ export default function Application(props) {
         interview={interview}
         interviewers={dailyInterviewers}
         state={state}
-        setState={setState}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
-    )
-
-  })
-
+    );
+  });
 
   return (
-
     <main className="layout">
-
       <section className="sidebar">
         {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
         <img
@@ -120,27 +100,15 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList
-            days={state.days}
-            day={state.day}
-            onChange={setDay}
-          />
+          <DayList days={state.days} day={state.day} onChange={setDay} />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
           src="images/lhl.png"
           alt="Lighthouse Labs"
         />
-
-
       </section>
-      <section className="schedule">
-
-        {dailyAppointmentsMap}
-
-      </section>
+      <section className="schedule">{dailyAppointmentsMap}</section>
     </main>
   );
 }
-
-

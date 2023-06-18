@@ -5,12 +5,13 @@ import Show from './Show';
 import Empty from './Empty';
 import Form from './Form';
 import Confirm from './Confirm';
+import Status from './Status';
 import Error from './Error';
 import useVisualMode from 'hooks/useVisualMode';
-import Axios from 'axios';
 
 const Appointment = (props) => {
-  const { id, interview, interviewers, time, state, setState } = props;
+  const { id, time, interview, interviewers, bookInterview, cancelInterview } =
+    props;
 
   const EMPTY = 'EMPTY';
   const SHOW = 'SHOW';
@@ -26,68 +27,16 @@ const Appointment = (props) => {
     props.interview ? SHOW : EMPTY
   );
 
-  function updateSpots(num) {
-    state.days.forEach((day) => {
-      if (day.name === state.day) {
-        day.spots -= num;
-      }
-    });
-    return state.days;
-  }
-
-  async function bookInterview(id, interview) {
-    console.log(id, interview);
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview },
-    };
-
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
-
-    /*--------*/
-    // Make the PUT request to update the database
-    return Axios.put(
-      `http://localhost:8001/api/appointments/${id}`,
-      appointment
-    ).then(() => {
-      if (!state.appointments[id].interview) {
-        const days = updateSpots(1);
-        setState({
-          ...state,
-          appointments,
-          days,
-        });
-      } else {
-        setState({
-          ...state,
-          appointments,
-        });
-      }
-    });
-  }
-
-  async function cancelInterview(id) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: null,
-    };
-
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
-
-    return Axios.delete(
-      `http://localhost:8001/api/appointments/${id}`,
-      appointment
-    ).then(() => {
-      const days = updateSpots(-1);
-      setState({ ...state, appointments, days });
-    });
-  }
+  // const updateSpots = (num) => {
+  //   const days = state.days.map((day) => {
+  //     if (day.name === state.day) {
+  //       return { ...day, spots: day.spots - num };
+  //     }
+  //     return day;
+  //   });
+  //   //  return updatedDays;
+  //   return setState((prev) => ({ ...prev, days }));
+  // };
 
   function save(name, interviewer) {
     const interview = {
