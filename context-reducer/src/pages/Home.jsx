@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { Cartcontext } from '../store/Context';
 
 const URL = 'https://fakestoreapi.com/products/';
 const Home = () => {
@@ -8,11 +9,14 @@ const Home = () => {
     const response = await axios.get(URL);
     setProduct(response.data);
   };
-
-  console.log(product);
   useEffect(() => {
     fetchProduct();
   }, []);
+
+  const GlobalState = useContext(Cartcontext);
+
+  const dispatch = GlobalState.dispatch;
+
   return (
     <div className="container mx-auto mt-5">
       <div className="flex gap-5 flex-wrap">
@@ -23,7 +27,10 @@ const Home = () => {
               <p>{item.title}</p>
               <p className="text-purple-500">${item.price}</p>
               <p>{item.category}</p>
-              <button className="bg-purple-400 py-2 px-2 text-white mt-3 rounded-md">
+              <button
+                className="bg-purple-600 py-1 px-2 text-white mt-3 rounded-md"
+                onClick={() => dispatch({ type: 'ADD', payload: item })}
+              >
                 add to cart
               </button>
             </div>
