@@ -80,6 +80,12 @@ npm start
 
 [Reactjs-day-4](https://youtu.be/C6JZk-mk504)
 
+- shopping cart, useContext, useReducer, hooks, api
+
+[Reactjs-day-5](https://youtu.be/o-TNYCAQJ-A)
+
+[Reactjs-day-6](https://youtu.be/W_PepUHxcsk)
+
 - **Assignment 1** : If we delete `node_modules`. How to run our app again successfully ?
 
 ```

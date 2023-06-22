@@ -21,6 +21,7 @@ const Home = () => {
     <div className="container mx-auto mt-5">
       <div className="flex gap-5 flex-wrap">
         {product.map((item, index) => {
+          item.quantity = 1;
           return (
             <div key={index} className="w-[200px]">
               <img src={item.image} alt={item.title} className="w-[100px]" />
