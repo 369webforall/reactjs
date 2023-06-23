@@ -9,6 +9,25 @@
 
 [Turing Interviw Question](https://www.turing.com/interview-questions/react-js)
 
+# 09 Most Common Interview Question
+
+1. What is react and how does it differ from other JavaScript  Framework ?
+2. What is the purpose of Virtual DOM in React ?
+
+3. How does React handle updates and rendering ?
+
+4. How does Data flow & what are props and state
+
+5. What is difference between server side rendering and client side rendering
+
+6. What are the Uses of Refs in React ?
+
+7. What is React Fiber ?
+
+8. What are Synthetic events in React?
+
+9. Why are Hooks introduced in React ? 
+
 ## Chapter 1 - Reactjs Basic concept
 
 A JavaScript library for building user interfaces
