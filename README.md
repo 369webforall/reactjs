@@ -330,7 +330,7 @@ export default App;
 - Example 2
 
 ```javascript
-import {useState} from 'react
+import {useState} from 'react'
 
 const App = () =>{
   const[inputValue, setInputValue] = useState("");
@@ -867,6 +867,9 @@ Note: Make sure to import `React`, `useLayoutEffect`, and `useRef` from the 'rea
 # State management using Redux toolkit
 
 Sure! Redux Toolkit is a library that simplifies and optimizes state management with Redux by providing a set of tools and best practices. Here's an example of how to use Redux Toolkit for state management in a React application:
+![How-redux-work](./asset/redux-1.png)
+![redux-data-flow](./asset/redux-data-flow.png)
+
 
 1. Install the necessary dependencies:
 
