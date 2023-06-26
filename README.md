@@ -11,7 +11,7 @@
 
 # 09 Most Common Interview Question
 
-1. What is react and how does it differ from other JavaScript  Framework ?
+1. What is react and how does it differ from other JavaScript Framework ?
 2. What is the purpose of Virtual DOM in React ?
 
 3. How does React handle updates and rendering ?
@@ -26,7 +26,7 @@
 
 8. What are Synthetic events in React?
 
-9. Why are Hooks introduced in React ? 
+9. Why are Hooks introduced in React ?
 
 ## Chapter 1 - Reactjs Basic concept
 
@@ -794,7 +794,7 @@ Note: Make sure to import `React` and `useRef` from the 'react' package before u
 
 # useLayoutEffect Hook
 
-The `useLayoutEffect` hook in React is similar to the `useEffect` hook, but it runs synchronously immediately after the DOM has been updated but before the browser paints the screen. It's useful for performing DOM measurements or updates that require synchronous calculations and should be applied before the user sees the updated content. Here's an example of how to use the `useLayoutEffect` hook:
+The `useLayoutEffect` hook in React is similar to the `useEffect` hook, but it runs synchronously immediately after the DOM has been updated but before the browser prints the screen. It's useful for performing DOM measurements or updates that require synchronous calculations and should be applied before the user sees the updated content. Here's an example of how to use the `useLayoutEffect` hook:
 
 ```javascript
 import React, { useLayoutEffect, useRef } from 'react';
@@ -933,7 +933,6 @@ Note: `useMemo` should be used when you have expensive computations or data tran
 Sure! Redux Toolkit is a library that simplifies and optimizes state management with Redux by providing a set of tools and best practices. Here's an example of how to use Redux Toolkit for state management in a React application:
 ![How-redux-work](./asset/redux-1.png)
 ![redux-data-flow](./asset/redux-data-flow.png)
-
 
 1. Install the necessary dependencies:
 
