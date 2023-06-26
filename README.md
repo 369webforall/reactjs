@@ -9,6 +9,25 @@
 
 [Turing Interviw Question](https://www.turing.com/interview-questions/react-js)
 
+# 09 Most Common Interview Question
+
+1. What is react and how does it differ from other JavaScript  Framework ?
+2. What is the purpose of Virtual DOM in React ?
+
+3. How does React handle updates and rendering ?
+
+4. How does Data flow & what are props and state
+
+5. What is difference between server side rendering and client side rendering
+
+6. What are the Uses of Refs in React ?
+
+7. What is React Fiber ?
+
+8. What are Synthetic events in React?
+
+9. Why are Hooks introduced in React ? 
+
 ## Chapter 1 - Reactjs Basic concept
 
 A JavaScript library for building user interfaces
@@ -311,7 +330,7 @@ export default App;
 - Example 2
 
 ```javascript
-import {useState} from 'react
+import {useState} from 'react'
 
 const App = () =>{
   const[inputValue, setInputValue] = useState("");
@@ -912,6 +931,9 @@ Note: `useMemo` should be used when you have expensive computations or data tran
 # State management using Redux toolkit
 
 Sure! Redux Toolkit is a library that simplifies and optimizes state management with Redux by providing a set of tools and best practices. Here's an example of how to use Redux Toolkit for state management in a React application:
+![How-redux-work](./asset/redux-1.png)
+![redux-data-flow](./asset/redux-data-flow.png)
+
 
 1. Install the necessary dependencies:
 
