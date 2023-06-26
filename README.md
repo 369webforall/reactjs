@@ -773,39 +773,6 @@ The `useEffect` hook is used to start the interval when the component mounts by 
 
 Note: Make sure to import `React` and `useRef` from the 'react' package before using them in your code.
 
-# useMemo Hook
-
-The `useMemo` hook in React is used to memoize the result of a computation so that it is only recomputed when its dependencies change. It is helpful for optimizing expensive calculations or complex data transformations. Here's an example of how to use the `useMemo` hook:
-
-```javascript
-import React, { useMemo } from 'react';
-
-function ExampleComponent({ a, b }) {
-  // Compute the result only when 'a' or 'b' changes
-  const result = useMemo(() => {
-    // Expensive computation or data transformation
-    console.log('Computing result...');
-    return a + b;
-  }, [a, b]);
-
-  return (
-    <div>
-      <p>Result: {result}</p>
-    </div>
-  );
-}
-
-export default ExampleComponent;
-```
-
-In this example, the `useMemo` hook is used to compute the value of `result` based on the values of `a` and `b`. The computation is performed inside the callback function passed to `useMemo`.
-
-The dependencies of the memoized value are specified as an array `[a, b]`. This means that whenever the values of `a` or `b` change, the computation is re-executed. If the dependencies remain the same between re-renders, the memoized value is reused, preventing unnecessary calculations.
-
-In the example, when `a` or `b` changes, the console log statement inside the `useMemo` callback will indicate that the result is being recomputed. If `a` and `b` remain the same between re-renders, the memoized value of `result` will be reused.
-
-Note: `useMemo` should be used when you have expensive computations or data transformations that are only needed when specific dependencies change. If you simply need to store and access a value without recomputing it, you should use `useRef` instead.
-
 # useLayoutEffect Hook
 
 The `useLayoutEffect` hook in React is similar to the `useEffect` hook, but it runs synchronously immediately after the DOM has been updated but before the browser paints the screen. It's useful for performing DOM measurements or updates that require synchronous calculations and should be applied before the user sees the updated content. Here's an example of how to use the `useLayoutEffect` hook:
@@ -844,6 +811,103 @@ Inside the `useLayoutEffect` callback, the `offsetWidth` of the element is measu
 The `useLayoutEffect` hook is similar to `useEffect`, but it runs synchronously after DOM updates. This means that any changes you make within `useLayoutEffect` will be applied immediately, potentially blocking the browser from painting the screen until your code execution is complete. Use it judiciously and ensure that the code inside `useLayoutEffect` is optimized and doesn't cause performance issues.
 
 Note: Make sure to import `React`, `useLayoutEffect`, and `useRef` from the 'react' package before using them in your code.
+
+# custom Hook
+
+# useMemo Hook
+
+Custom hooks are basically reusable function.
+In simple terms,Custom hooks are your own hooks that you can create for your own use and you can use them multiple times in your Project.
+
+```javascript
+import react, { useEffect, useState } from 'react';
+import useFetch from './customhooks/useFetch';
+const App = () => {
+  const data = useFetch('https://dummyjson.com/users');
+  // const [users, setUsers] = useState([]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetch('https://dummyjson.com/users);
+  //     const data = await response.json()
+  //     setUser(data)
+  //   };
+
+  //   fetchData()
+  // }, []);
+
+  return (
+    <>
+      <div>
+        {data.map((user) => (
+          <h4 key={user.id}>
+            {user.firstName} {user.lastName}
+          </h4>
+        ))}
+      </div>
+    </>
+  );
+};
+
+export default App;
+```
+
+- Create custhooks folder in src directory
+- create new file called useFetch.js inside customhooks folder
+
+useFetch.js
+
+```javascript
+import react, { useEffect, useState } from 'react';
+
+const useFetch = (url) => {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(url);
+      const data = await response.json()
+      setUser(data)
+    };
+
+    fetchData()
+  }, []);
+
+  return response;
+
+
+```
+
+---
+
+The `useMemo` hook in React is used to memoize the result of a computation so that it is only recomputed when its dependencies change. It is helpful for optimizing expensive calculations or complex data transformations. Here's an example of how to use the `useMemo` hook:
+
+```javascript
+import React, { useMemo } from 'react';
+
+function ExampleComponent({ a, b }) {
+  // Compute the result only when 'a' or 'b' changes
+  const result = useMemo(() => {
+    // Expensive computation or data transformation
+    console.log('Computing result...');
+    return a + b;
+  }, [a, b]);
+
+  return (
+    <div>
+      <p>Result: {result}</p>
+    </div>
+  );
+}
+
+export default ExampleComponent;
+```
+
+In this example, the `useMemo` hook is used to compute the value of `result` based on the values of `a` and `b`. The computation is performed inside the callback function passed to `useMemo`.
+
+The dependencies of the memoized value are specified as an array `[a, b]`. This means that whenever the values of `a` or `b` change, the computation is re-executed. If the dependencies remain the same between re-renders, the memoized value is reused, preventing unnecessary calculations.
+
+In the example, when `a` or `b` changes, the console log statement inside the `useMemo` callback will indicate that the result is being recomputed. If `a` and `b` remain the same between re-renders, the memoized value of `result` will be reused.
+
+Note: `useMemo` should be used when you have expensive computations or data transformations that are only needed when specific dependencies change. If you simply need to store and access a value without recomputing it, you should use `useRef` instead.
 
 # State management using Redux toolkit
 
