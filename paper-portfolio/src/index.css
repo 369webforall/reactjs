@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'NewLight';
+  src: url('./assets/fonts/5f242a694256f02b944d5767_EditorialNew-Light.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Medium';
+  src: url('./assets/fonts/5f242a69b1577e63266b4d72_DomaineDispCondMedium.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Canopee';
+  src: url('./assets/fonts/616fd1dd00cf6c70f978fc69_Canopee.woff2')
+    format('woff2');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
