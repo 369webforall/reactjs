@@ -29,6 +29,9 @@
 # Projects
 
 **project 1**
+[class recording - 1 - 7/10/2023](https://youtu.be/kbXp25IZLcM)
+
+[class recording - 2 - 7/11/2023](https://youtu.be/sYISdK7N1dU)
 
 ## clone of below website using reactjs.
 
